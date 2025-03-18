@@ -24,7 +24,7 @@ Follow these steps to compile and run any of the C programs in this repository:
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/YourUsername/C-programming.git
-   cd C-Programming-Problems
+   cd C-programming
    ```
 
 2. **Compile a C Program:**
