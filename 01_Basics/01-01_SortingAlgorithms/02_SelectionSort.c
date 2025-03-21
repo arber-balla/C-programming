@@ -1,24 +1,24 @@
 #include <stdio.h>
 
+// Function to perform Selection Sort (Ascending Order)
 void selectionSort(int collection[], int collectionSize) {
-
     int tempMinValue, minValueIndex, temp;
 
-    // Iterate over the colletion from first to the n - 2 element
-    for(int i = 0; i < collectionSize - 1; i++){
-        // Initialize the temporary values to the first element in range
+    // Iterate over the array, setting each element in place one at a time
+    for (int i = 0; i < collectionSize - 1; i++) {
+        // Assume the current element is the smallest
         tempMinValue = collection[i];
         minValueIndex = i;
 
-        // Iterate from the i + 1 element to the last one and keep track of the smallest you encounter (initial value too)
-        for(int j = i + 1; j < collectionSize; j++){
-            if(collection[j] < tempMinValue){  // '<' for ascending order || '>' for descending order
+        // Scan the rest of the array to find the actual smallest element
+        for (int j = i + 1; j < collectionSize; j++) {
+            if (collection[j] < tempMinValue) { // Change '<' to '>' for descending order
                 tempMinValue = collection[j];
                 minValueIndex = j;
             }
         }
 
-        // Exchange the variables so the smallest one goes first
+        // Swap the smallest element found with the current element at index 'i'
         temp = collection[i];
         collection[i] = collection[minValueIndex];
         collection[minValueIndex] = temp;
@@ -26,28 +26,37 @@ void selectionSort(int collection[], int collectionSize) {
 }
 
 int main() {
-
-    // Get the number of elements in data collection
     int collectionSize;
-    printf("Insert the number of elements in the collection: ");
+
+    // Ask the user for the number of elements
+    printf("Enter the number of elements in the collection: ");
     scanf("%d", &collectionSize);
 
-    // Read the data collection
+    // Validate input (collection size must be positive)
+    while (collectionSize < 1) {
+        printf("Invalid size! Please enter a positive number.\n");
+        scanf("%d", &collectionSize);
+    }
+
+    // Declare the array with user-specified size
     int collection[collectionSize];
-    printf("Insert the data elements: ");
-    
-    for(int i = 0; i < collectionSize; i++){
-        printf("Enter element %d: ", i);
+
+    // Prompt the user to enter each element of the collection
+    printf("Enter %d elements:\n", collectionSize);
+    for (int i = 0; i < collectionSize; i++) {
+        printf("Element %d: ", i + 1);
         scanf("%d", &collection[i]);
     }
 
-    // Sort the data using the selection sort algorithm
+    // Sort the collection using Selection Sort
     selectionSort(collection, collectionSize);
 
-    // Print the ordered array
-    for(int i = 0; i < collectionSize; i++) {
+    // Display the sorted collection
+    printf("\nSorted collection (Ascending Order):\n");
+    for (int i = 0; i < collectionSize; i++) {
         printf("%d ", collection[i]);
     }
+    printf("\n");
 
     return 0;
 }
