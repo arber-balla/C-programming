@@ -21,7 +21,7 @@ int primeLvlOne(int number) {
     // If there are more than one divisors it means that the number is not prime
     if (countDivisors(number) > 2) return 0;
 
-    // Esle the number is prime
+    // Else the number is prime
     return 1;
 }
 
